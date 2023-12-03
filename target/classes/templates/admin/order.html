@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+	<title>ORDER ADMIN</title>
+	<!-- BOOTSTRAP CORE STYLE  -->
+	<link th:href="@{/resources/assets/css/bootstrap.css}" rel="stylesheet" />
+	<!-- FONT AWESOME STYLE  -->
+	<link th:href="@{/resources/assets/css/font-awesome.css}" rel="stylesheet" />
+	<!-- CUSTOM STYLE  -->
+	<link th:href="@{/resources/assets/css/style.css}" rel="stylesheet" />
+	<!-- GOOGLE FONT -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+	<header lang="en" th:include="/fragments/header-admin.html :: header-admin"></header>
+	<!-- MENU SECTION END-->
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row pad-botm">
+				<div class="col-md-12">
+					<h4 class="header-line">ORDER</h4>
+
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Advanced Tables -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							List of Orders
+						</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Product</th>
+											<th>Date</th>
+											<th>Price</th>
+											<th>Quantity</th>
+											<th>Total</th>
+										</tr>
+									</thead>
+									<tbody>
+										<th:block th:each="item : ${orderList}">
+											<tr>
+												<td>[[${item.id}]]</td>
+												<td>[[${item.product}]]</td>
+												<td>[[${item.date}]]</td>
+												<td>[[${item.price}]]</td>
+												<td>[[${item.quantity}]]</td>
+												<td>[[${item.total}]]</td>
+											</tr>
+										</th:block>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+					<!--End Advanced Tables -->
+				</div>
+			</div>
+			<!-- /. ROW  -->
+
+		</div>
+	</div>
+	<!-- CONTENT-WRAPPER SECTION END-->
+	<footer lang="en" th:include="/fragments/footer-admin.html :: footer-admin">
+</body>
+
+</html>

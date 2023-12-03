@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- COFFEESHOP USER INTERFACE -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/resources/css/grid.css}">
+	<link rel="stylesheet" th:href="@{/resources/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/resources/css/style.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Coffee Shop</title>
+</head>
+
+<body>
+	<form class="forms-sample" method='GET' th:action="@{/index}" th:object="${indexForm}" name="indexForm">
+		<input type="hidden" name="id" />
+	</form>
+	<div class="main">
+		<header id="header">
+			<div class="header__container">
+				<img th:src="@{/resources/img/coffee_image1.jpg}" alt="coffee" class="header__banner">
+
+
+
+				<div class="header__navbar">
+					<div class="grid wide">
+						<div class="header__navbar-container">
+							<div class="list-header__navbar">
+								<div class="row">
+									<i class="fa-solid fa-magnifying-glass col-1"></i>
+
+									<div class="header__navbar-center col-9">
+										<div class="row">
+											<div class="item__navbar active">
+												<a th:href="@{#header}">Trang Chủ</a>
+											</div>
+
+											<div class="item__navbar">
+												<a th:href="@{#menu__drink}">Thực đơn</a>
+											</div>
+
+											<div class="item__navbar item__navbar--logo">
+												<a th:href="@{#header}">
+													<img th:src="@{/resources/img/Exclude.png}" alt=""
+														class="logo-page">
+												</a>
+											</div>
+
+											<div class="item__navbar">
+												<a th:href="@{#combo}">Ưu Đãi</a>
+											</div>
+
+											<div class="item__navbar">
+												<a th:href="@{#about}">Về chúng tôi</a>
+											</div>
+										</div>
+
+
+									</div>
+
+									<div class="header__navbar-cart ">
+										<i class="fa-solid fa-bag-shopping cart-logo"></i>
+										<span class="quanlity__cart">0</span>
+									</div>
+
+									<div class="header__navbar-user">
+										<a th:href="@{/logout}" style="color: var(--white)"><i
+												class="fa-solid fa-right-from-bracket"></i></a>
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="header__content">
+					<div class="grid wide">
+
+						<div class="header__content-body col col-8">
+							<div class="header__content-subtitle">
+								<h3>#WELLCOME TO</h3>
+							</div>
+
+							<div class="header__content-title">
+								<h1>
+									THE LANGTHANG
+
+									<br>
+									COFFEE HOUSE
+
+								</h1>
+							</div>
+
+							<div class="header__content-desc">
+								Không Chỉ Là Cà Phê, Chúng Tôi Mang Đến Những Trải Nghiệm
+							</div>
+
+							<div class="header__content-btn">
+								<a th:href="@{#menu__drink}"><button class="btn">Đặt hàng</button></a>
+								<button class="btn btn-transparent">Xem Video Giới Thiệu</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<main>
+			<section class="space__shop">
+				<div class="space__shop-container">
+					<div class="grid wide">
+						<div class="row">
+							<div class="space__shop-content col col-6">
+								<div class="space__shop-content-title">
+									Về không gian
+								</div>
+
+								<div class="space__shop-content-desc">
+									Không gian của LANGTHANG COFFEE được thiết kế với tông màu vàng ấm áp và thoải mái.
+									Đồ nội thất được bố trí thông minh và tinh tế để mang lại sự thoải mái cho khách
+									hàng. Bức tranh nghệ thuật treo trên tường cùng với đèn lồng pha lê tạo ra một không
+									gian sang trọng và quyến rũ. Bạn có thể ngồi ở các góc ngồi riêng tư hoặc các bàn
+									đơn tùy theo sở thích của mình. LANGTHANG COFFEE sẽ là một nơi lý tưởng để bạn tìm
+									kiếm sự yên bình và thư giãn.
+								</div>
+
+
+							</div>
+
+							<div class="space__shop-img col col-6">
+								<div class="box-img">
+									<img th:src="@{/resources/img/space_shop/Rectangle46.png}" alt=""
+										class="img__space active">
+									<img th:src="@{/resources/img/space_shop/Rectangle47.png}" alt=""
+										class="img__space">
+									<img th:src="@{/resources/img/space_shop/Rectangle48.jpg}" alt=""
+										class="img__space">
+									<img th:src="@{/resources/img/space_shop/Rectangle49.jpg}" alt=""
+										class="img__space">
+									<img th:src="@{/resources/img/space_shop/Rectangle50.jpg}" alt=""
+										class="img__space">
+
+								</div>
+
+								<div class="icon__next" onclick="next()">
+									<i class="fa-solid fa-chevron-right"></i>
+								</div>
+
+								<div class="icon__prev" onclick="prev()">
+									<i class="fa-solid fa-chevron-left"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="best__seller" id="best__seller">
+				<div class="best__seller-container">
+					<ul class="list-best__seller">
+						<li class="item-best__seller" aria-hidden="true">
+							<div class="banner">
+								BEST SELLER #1
+								<br>
+								CÀ PHÊ SỮA
+							</div>
+
+							<img th:src="@{/resources/img/drink_menu/cafe2.png}" alt="" class="img-best__seller">
+
+							<h1 class="banner banner__title">
+								BEST SELLER #1
+								<br>
+								CÀ PHÊ SỮA
+							</h1>
+						</li>
+
+						<li class="item-best__seller-btn" style="">
+							<a th:href="@{#}"><button class="item-best__seller-btn-content ">Trải nghiệm
+									ngay</button></a>
+						</li>
+
+					</ul>
+				</div>
+			</section>
+
+			<section class="menu__drink-section" id="menu__drink">
+				<div class="grid wide">
+					<div class="menu__drink-container">
+						<div class="menu__drink-title">
+							<h1>Có gì trong thực đơn</h1>
+						</div>
+
+						<ul class="menu__drink-options">
+							<div class="row">
+								<li class="menu__drink-item active">Cà Phê</li>
+								<li class="menu__drink-item">Trà Sữa</li>
+								<li class="menu__drink-item">Soda</li>
+							</div>
+						</ul>
+
+						<div class="menu__drink">
+							<ul class="box__list list__drink active list__drink-coffee">
+
+
+							</ul>
+
+							<ul class="box__list list__drink list__drink-milktea">
+
+							</ul>
+
+							<ul class="box__list list__drink list__drink-soda">
+
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+			</section>
+
+			<section class="combo-section" id="combo">
+				<div class="grid wide">
+					<div class="combo__container">
+						<div class="combo__container-title">
+							<h1>cùng với những ưu đãi</h1>
+						</div>
+
+						<div class="combo__list">
+							<div class="combo__item">
+								<div class="row">
+									<div class="combo__item-img col col-5">
+										<img th:src="@{resources/img/img__advantage/ship_advantage.jpg}" alt="">
+									</div>
+
+									<div class="combo__body col col-7">
+										<div class="combo__body-title">
+											<h1>ưu đãi #1</h1>
+										</div>
+
+										<div class="combo__body-content">
+											Trong những ngày này, hãy để LangThang ghé thăm bạn với những ly đồ uống
+											quen thuộc.
+											Đặc biệt, bạn sẽ nhận được ưu đãi "Mua 1 tặng 1 đồ uống bất kì" với những
+											đơn hàng take-away.
+											Hy vọng món quà của LangThang Coffee gửi gắm sẽ mang lại niềm vui và tạo cảm
+											hứng cho một ngày làm việc của bạn!
+										</div>
+
+										<div class="combo__body-btn">
+											<button>Cùng trải nghiệm ngay</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="combo__item">
+								<div class="row">
+
+
+									<div class="combo__body col col-7">
+										<div class="combo__body-title">
+											<h1>ưu đãi #2</h1>
+										</div>
+
+										<div class="combo__body-content ">
+											Sự kết hợp giữa Cappuccino và bánh bông lan nhân khô nho là một cách tuyệt
+											vời để kết hợp hương vị ngọt ngào và tươi mát. Cappucino thơm ngon và mát
+											lạnh sẽ làm dịu cơn khát vào những ngày nóng bức. Bánh bông lan nhân khô nho
+											sẽ tạo ra một vị ngọt dịu, cùng với vị giòn của bánh, mang lại trải nghiệm
+											thưởng thức đầy tuyệt vời. Hãy đến LangThang Coffee của chúng tôi để thưởng
+											thức Ưu Đãi này ngay hôm nay!
+										</div>
+
+										<div class="combo__body-btn">
+											<button>Cùng trải nghiệm ngay</button>
+										</div>
+									</div>
+
+									<div class="combo__item-img col col-5">
+										<img th:src="@{/resources/img/combo/Rectangle132.png}" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="menu__cake-section" id="menu__cake">
+				<div class="grid wide">
+					<div class="menu__cake-container">
+						<div class="menu__cake-title">
+							<h1>BÁNH NGỌT. <br>
+								SAO LẠI KHÔNG ?</h1>
+						</div>
+					</div>
+
+					<ul class="box__list list__cake"></ul>
+				</div>
+			</section>
+
+
+			<section class="about" id="about">
+				<div class="grid wide">
+					<div class="about__container">
+						<div class="about__img">
+							<img th:src="@{/resources/img/Exclude.png}" alt="logo">
+						</div>
+
+						<div class="about__slogan">
+							<h1>"Bởi vì chúng tôi có thể!!!"</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<footer></footer>
+
+	</div>
+
+	<div id="toast">
+
+	</div>
+
+	<div class="cart">
+		<div class="cart__header">
+			<div class="button__back">
+				<i class="fa-solid fa-arrow-left"></i> Quay lại
+			</div>
+
+			<div class="cart__title">
+				Giỏ hàng
+			</div>
+
+			<div class="cart__quanlity">
+				SL : <span class="quanlity">0</span>
+			</div>
+		</div>
+		<div class="cart__container">
+			<div class="cart_body">
+
+				<div class="list__cart">
+
+
+				</div>
+			</div>
+			<div class="cart__footer">
+				<div class="cart__sub-total">
+					<div class="sub__total-bill">
+						<span class="title__total-bill">Tổng hóa đơn : </span>
+						<span class="content__total-bill">0 VNĐ</span>
+					</div>
+					<div class="sub__total-ship">
+						<span class="title__total-ship">Phí giao hàng : </span>
+						<span class="content__total-ship">15,000 VNĐ</span>
+					</div>
+				</div>
+
+				<div class="cart__total">
+					<span class="cart__total-title">
+						Tổng tiền :
+					</span>
+
+					<span class="cart__total-content">
+						0 VNĐ
+					</span>
+				</div>
+
+				<button class="button__buy ">
+					xác nhận thanh toán
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="form__address">
+		<form class="form" id="form-1" role="form" method='POST' th:action="@{/index-order}" th:object="${orderForm}"
+			enctype="multipart/form-data">
+			<div class="btn-close">
+				<i class="fa-solid fa-xmark"></i>
+			</div>
+			<h3 class="heading">XÁC NHẬN THÔNG TIN</h3>
+			<p class="desc">Hãy điền đầy đủ thông tin để chúng tôi có thể phục vụ bạn một cách tốt nhất</p>
+			<div class="spacer"></div>
+			<div class="form-col">
+				<div>
+					<div class="form-group">
+						<label for="fullname" class="form-label">Tên của bạn là</label>
+						<input id="fullname" name="fullname" type="text" class="form-control" />
+						<span class="form-message"></span>
+					</div>
+
+					<div class="form-group">
+						<label for="phone-number" class="form-label">Số Điện Thoại</label>
+						<input id="phone-number" name="phone-number" type="text" placeholder="Nhập số điện thoại"
+							class="form-control" />
+						<span class="form-message"></span>
+					</div>
+
+					<div class="form-group">
+						<label for="address" class="form-label">Địa Chỉ</label>
+						<input id="address" name="address" placeholder="Nhập địa chỉ" type="text"
+							class="form-control" />
+						<span class="form-message"></span>
+					</div>
+				</div>
+
+				<div>
+					<div class="form-group">
+						<label for="fullname" class="form-label">Chọn hình thức thanh toán</label>
+						<div>
+							<input type="radio" id="payment-tranfer" name="payment" value="Chuyển khoản">
+							<label for="payment-tranfer">Chuyển khoản</label><br>
+							<input type="radio" id="payment-at" name="payment" value="Thanh toán khi nhận hàng">
+							<label for="payment-at">Thanh toán khi nhận hàng</label><br>
+
+						</div>
+						<span class="form-message"></span>
+					</div>
+					<div>
+						<div id="image-container" style="display: none;">
+							<img th:src="@{/resources/img/ThanhToan.jpg}" alt="Hình ảnh hiển thị khi chọn Chuyển khoản" style="    width: 210px;
+                        height: 180px;">
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<button class="form-submit" type="submit" name="action" value="save">Đặt đơn</button>
+		</form>
+
+	</div>
+
+
+	<script th:src="@{/resources/validator.js}"></script>
+	<script>
+
+		Validator({
+			form: '#form-1',
+			formGroupSelector: '.form-group',
+			errorSelector: '.form-message',
+			rules: [
+				Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+				Validator.minLength('#phone-number', 10),
+				Validator.isRequired('#address'),
+				Validator.isConfirmed(
+					'#password_confirmation',
+					function () {
+						return document.querySelector('#form-1 #password').value
+					},
+					'Mật khẩu nhập lại không chính xác'
+				)
+			],
+			onSubmit: function (data) {
+				console.log(data)
+			}
+		})
+	</script>
+
+	<script th:src="@{/resources/main.js}"></script>
+
+</body>
+
+</html>

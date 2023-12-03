@@ -1,0 +1,51 @@
+.grid{
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+
+.grid.wide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -12px;
+    margin-right: -12px;
+
+}
+
+.col {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.col-1{
+    width: 8.33333%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-5 {
+    width: 41.66667%;
+}
+
+.col-7 {
+    width: 58.33333%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-8 {
+    width: 66.66667%;
+}
+
+.col-6 {
+    width: 50%;
+}

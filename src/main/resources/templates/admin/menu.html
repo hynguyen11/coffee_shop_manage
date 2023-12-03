@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+	<title>MENU ADMIN</title>
+	<!-- BOOTSTRAP CORE STYLE  -->
+	<link th:href="@{/resources/assets/css/bootstrap.css}" rel="stylesheet" />
+	<!-- FONT AWESOME STYLE  -->
+	<link th:href="@{/resources/assets/css/font-awesome.css}" rel="stylesheet" />
+	<!-- CUSTOM STYLE  -->
+	<link th:href="@{/resources/assets/css/style.css}" rel="stylesheet" />
+	<!-- GOOGLE FONT -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<script>
+		function editProduct() {
+			productForm.id.value = $('#id').val();
+			productForm.submit();
+		}
+		function deleteById() {
+			productFormDelete.id.value = $('#id').val();
+			productFormDelete.submit();
+		};
+		function showModalDelete(id) {
+			$('#id').val(id);
+			$('#modal-delete').modal('show');
+		}
+		function showModalAdd() {
+			$('#modal-add').modal('show');
+		}
+		function showModalUpdate(id) {
+			productForm.id.value = id;
+			$('#modal-add').modal('show');
+		}
+	</script>
+</head>
+
+<body>
+	<form class="forms-sample" method='GET' th:action="@{/menu-update}" th:object="${productForm}" name="productForm">
+		<input type="hidden" name="id" />
+	</form>
+	<form class="forms-sample" method="POST" th:action="@{/menu-delete}" th:object="${productFormDelete}"
+		name="productFormDelete">
+		<input type="hidden" id="id" name="id" />
+	</form>
+	<header lang="en" th:include="/fragments/header-admin.html :: header-admin"></header>
+	<!-- MENU SECTION END-->
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="row pad-botm">
+				<div class="col-md-12">
+					<h4 class="header-line">Menu</h4>
+				</div>
+			</div>
+			<!-- /. ROW -->
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							List of products
+						</div>
+						<div class="panel-body">
+							<ul class="nav nav-tabs">
+								<th:block th:each="item : ${categoryList}">
+									<li class=" active nav-tabs-menu-category"><a th:href="@{/searchCategory/{id}(id=${item.id})}" >[[${item.name}]]</a>
+									</li>
+								</th:block>
+							</ul>
+							<div class="tab-content">
+								<!-- Coffee tab -->
+								<div class="tab-pane fade active in" id="coffee">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th>Name</th>
+															<th>Price</th>
+															<th>Descripton</th>
+															<th>Delete/Update</th>
+														</tr>
+													</thead>
+													<tbody>
+														<th:block th:each="item : ${productList}">
+															<tr>
+																<td>[[${item.id}]]</td>
+																<td>[[${item.name}]]</td>
+																<td>[[${item.price}]]</td>
+																<td>[[${item.detail}]]</td>
+																<td>
+																	<!-- Small modal -->
+																	<button type="button" class="btn btn-danger"
+																		th:onclick="showModalDelete([[${item.id}]]);"
+																		data-toggle="modal"
+																		data-target="#exampleModal">Delete
+																	</button>
+
+																	<!-- Update button -->
+																	<button type="button" class="btn btn-info"
+																		data-toggle="modal"
+																		data-target="#exampleModalCenter"
+																		th:onclick="showModalUpdate([[${item.id}]]); ">
+																		Update
+																	</button>
+																	
+																</td>
+														</th:block>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /. ROW -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<!-- Button Add -->
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter1"
+						th:onclick="showModalAdd();">
+						Add New
+					</button>
+				</div>
+			</div>
+			<!-- /. ROW -->
+
+		</div>
+	</div>
+	<th:block th:replace="admin/menu/ModalAdd :: ModalAdd" />
+	<th:block th:replace="admin/modal/ModalDelete :: ModalDelete" />
+	<footer lang="en" th:include="/fragments/footer-admin.html :: footer-admin">
+</body>
+
+</html>

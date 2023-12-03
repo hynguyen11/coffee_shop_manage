@@ -1,0 +1,29 @@
+﻿<!DOCTYPE HTML>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<th:block th:fragment="ModalDelete">
+	<!-- Modal -->
+	<div id="modal-delete" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">
+					</h5>
+	
+				</div>
+				<div class="modal-body">
+					Are you sure?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" onclick="deleteById();" class="btn btn-danger">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>
+</body>
+</html>

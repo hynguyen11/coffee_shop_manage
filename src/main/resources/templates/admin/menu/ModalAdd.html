@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+	<th:block th:fragment="ModalAdd">
+		<div id="modal-add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<form role="form" method='POST' th:action="@{/menu-add}" th:object="${productForm}"
+						enctype="multipart/form-data">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle1">Add Products</h5>
+						</div>
+						<div class="modal-body">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									Product information
+								</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<label>Enter Name Product</label>
+										<input class="form-control" type="text" th:field="*{name}" required />
+									</div>
+									<div class="form-group">
+										<label>Enter Price</label>
+										<input class="form-control" type="text" th:field="*{price}" required />
+									</div>
+									<div class="form-group">
+										<label>Descripton</label>
+										<input class="form-control" type="text" style="min-height:70px;"
+											th:field="*{detail}" required />
+									</div>
+
+									<div class="form-group">
+										<label>Product images </label>
+										<input type="file" id="imageUpload" name="imageUpload" accept="image/*" />
+									</div>
+
+									<div class="form-group">
+										<label>Category</label>
+										<div class="radio">
+											<th:block th:each="item : ${categoryList}">
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios1"
+														th:value="${item.id}" th:field="*{category}">[[${item.name}]]
+												</label><br>
+											</th:block>
+										</div>
+									</div>
+
+									<button type="reset" class="btn btn-primary">Reset Fields</button>
+
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+							<th:block th:if="*{id != null}">
+								<button type="submit" name="action" class="btn btn-info" value="save"
+									onclick="editProduct();">Update</button>
+									<input type="hidden" th:field="*{id}">
+							</th:block>
+							<th:block th:if="*{id == null}">
+								<button type="submit" name="action" class="btn btn-success" value="save">Add
+									New</button>
+							</th:block>
+						</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</th:block>
+</body>
+
+</html>
